@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
             <label for="umur">Umur</label>
-            <input type="number" class="form-control" name="umur" value="{{$cast->umur}}"  id="umur" placeholder="Masukkan Umur">
+            <input type="text" class="form-control" name="umur" value="{{$cast->umur}}"  id="umur" placeholder="Masukkan Umur">
             @error('umur')
                 <div class="alert alert-danger">
                     {{ $message }}

@@ -21,7 +21,7 @@ class FilmController extends Controller
      */
     public function index()
     {
-        $film = film::all(); 
+        $film = Film::all(); 
         return view('Film.index', compact('film')); 
     }
 
@@ -32,7 +32,7 @@ class FilmController extends Controller
      */
     public function create()
     {
-        $genre = genre::all(); 
+        $genre = Genre::all(); 
         return view('Film.create', compact('genre')); 
     }
 

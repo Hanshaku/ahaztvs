@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Cast;
 use Illuminate\Http\Request;
-use DB;
 
 class CastController extends Controller
 {
+
+    
     public function __construct()
-    { 
+    { //Memasang pengecualian middleware route index & show pd Controller
         $this->middleware('auth')->except(['index', 'show']); // only
     }
 
@@ -44,7 +45,7 @@ class CastController extends Controller
     {
     	$this->validate($request,[
     		'nama' => 'required',       // Memvalidasi data nama berisikan inputan / tidak pd form
-    		'umur' => 'required',       // $message alert danger
+    		'umur' => 'required',
             'bio' => 'required'
     	]);
  

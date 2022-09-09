@@ -8,7 +8,7 @@ use App\Genre;
 class GenreController extends Controller
 {
     public function __construct()
-    { 
+    { //Memasang pengecualian middleware route index & show pd Controller
         $this->middleware('auth')->except(['index', 'show']); // only
     }
 
@@ -18,8 +18,8 @@ class GenreController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()     
-    {
-        $genre = Genre::all(); 
+    {// Collection - Pembungkus dalam sebuah array agar dpt menggunakan bnyk fitur function
+        $genre = Genre::all(); // Model::Select * From Genres
         return view('Genre.index', compact('genre')); 
     }
 
@@ -42,14 +42,14 @@ class GenreController extends Controller
     public function store(Request $request)
     {
     	$this->validate($request,[
-    		'nama' => 'required'       
+    		'nama' => 'required'       // Memvalidasi data nama berisikan inputan / tidak pd form
     	]);
  
         Genre::create([
-    		'nama' => $request->nama,  
+    		'nama' => $request->nama,  // Mengirimkan data 'nama' berisikan inputan dr nama kedalam DB
     	]);
  
-    	return redirect('/genre');
+    	return redirect('/Genre');
     }
 
     /**
@@ -57,10 +57,10 @@ class GenreController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */  
-    public function show($id)   
-    {                           
-        $genre = Genre::find($id);
+     */  //Atau merubah parameter $id dgn memakai nama class 
+    public function show($id)   //  (Genre $genre) - "Key Genre" => "value key $genre"
+    {                           //         v
+        $genre = Genre::find($id);//compact('genre')  -> sehingga line cari($id) dapat dihapus penggunaannya
         return view('Genre.show',  compact('genre'));
     }
 
@@ -69,10 +69,10 @@ class GenreController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */  
-    public function edit($id)   
-    {             
-        $genre = Genre::find($id);
+     */  //Atau merubah parameter $id dgn memakai nama class 
+    public function edit($id)   //  (Genre $genre)
+    {                           //          v
+        $genre = Genre::find($id);//compact('genre') -> sehingga line cari($id) dapat dihapus penggunaannya
         return view('Genre.edit', compact('genre'));
     }
 
@@ -82,17 +82,18 @@ class GenreController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */ 
-    public function update($id, Request $request) 
+     */  //Atau merubah parameter $id dgn memakai nama class 
+    public function update($id, Request $request) //  (Genre $genre)
     {
        $request->validate([
-            'nama' => 'required|unique:genres'  
+            'nama' => 'required|unique:genres'  // genres merupakan tabel pd DB
 
        ]);
 
-       $genre = Genre::find($id); 
-       $genre->nama = $request->nama;    
-                                         
+       $genre = Genre::find($id); // sehingga line cari($id) dapat dihapus penggunaannya
+       $genre->nama = $request->nama;    // Mengupdate data 'nama' berisikan inputan dr nama kedalam DB 
+                                         // berdasarkan find($id) atau sqlnya where id = $id
+
        $genre->update();
        return redirect('/genre');
     }
@@ -102,10 +103,10 @@ class GenreController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
-    public function destroy($id) 
+     */ //Atau merubah parameter $id dgn memakai nama class 
+    public function destroy($id) //  (Genre $genre)
     {
-        $genre = Genre::find($id); 
+        $genre = Genre::find($id); // sehingga line cari($id) dapat dihapus penggunaannya
         $genre->delete();
         return redirect('/genre');
 

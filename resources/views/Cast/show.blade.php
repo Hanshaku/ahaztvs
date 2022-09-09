@@ -5,7 +5,7 @@
 @section ('heading','Detail Peserta')   
 
 @section ('body')                       <!-- Ditampilkan pada user -->
-  <h2>Menampilkan Data Peserta Cast ke-{{$cast->id}}</h2>
+  <h2>Menampilkan Data Peserta Cast ke-{{$cast->id}} </h2>
   <hr>
   <h4>Nama Lengkap : {{$cast->nama}}</h4>
   <p>Umur :{{$cast->umur}}</p>

@@ -21,10 +21,10 @@ templating    dan sebagainya tidak perlu dibuat berkali-kali sehingga rawan inko
 
 Model       - Kelola tabel untuk memanipulasi Fillable Database     - Eloquent Relationship - Mass Assignment
 View        - Tampilan Front end                                    - .blade Templating Engine
-Controller  - Mengatur halaman & alur req yang tampil pd Web view   - Validate - CRUD - Middleware - Eloquent ORM
+Controller  - Mengatur halaman & alur req yang tampil pd Web view   - Validate - CRUD
 
 Model       - Cast (Singular)           Class       - Huruf awal besar          BLADE ESCAPE CHARACTER
-View folder - Casts (Plural)            Migration   - casts (Plural)            {{  }}   - ?php echo dg htmlspecialchars
+View        - Casts (Plural)            Migration   - casts (Plural)            {{  }}   - ?php echo dg htmlspecialchars
 Controller  - Cast (Singular)           Column      - cast (Singular)           {!!  !!} - Tidak melakukan escaping
 
 Public      - Menyimpan asset statis seperti file CSS, JS, IMG 
@@ -41,22 +41,18 @@ Route::get('/', function () {
     return view('welcome', ['name'] => ['Samantha']); 
 }); Mengirimkan data name berisikan Samantha kedalam view welcome
 
-@stack > push       - Digunakan u/ CSS, JS, berjalan berulang kali bilamana looping     @extends    - template  1x
-@yield > section    - Digunakan u/ content, hanya berjalan 1x bilamana looping          @include    - component ∾
+@stack > push       - Digunakan u/ CSS, JS, berjalan berulang kali bilamana looping
+@yield > section    - Digunakan u/ content, hanya berjalan 1x bilamana looping
 
 function up()       - DO   ~ php artisan migrate         $table->unsignedBigInteger('user_id');
 function down()     - UNDO ~ php artisan migrate reverse/rollback 
 |                            membalikkan proses migration pada up() / Kebalikannya
 |                            $table->dropForeign(['user_id']); $table->dropColumn(['user_id']); 
                            
-Eloquent Relation   -  1 to 1  | - Foreign key hasOne               LOOPING   
-|                              | + Foreign key belongsTo            @forelse ($genre as $key => $value)
-|                   -  1 to n  | - Foreign key hasMany              @endforelse |index genre => value genre
+Eloquent Relation   -  1 to 1  | - Foreign key hasOne
 |                              | + Foreign key belongsTo
-
-Middleware security - Pengaturan halaman HOME di App/Providers/RSS.php  |  public const HOME = '/';
-|                   - Jenis security"nya ada di App/Http/Kernel.php
-             
+|                   -  1 to n  | - Foreign key hasMany
+|                              | + Foreign key belongsTo
 */
 
 Route::get('/data-tables', function () {   
@@ -99,27 +95,31 @@ Route::delete('/film/{id}','FilmController@destroy')->name('film.destroy');
 
 
 
-
 /* CRUD Routes Modes Binding - Route yang mengikat pada Model
-Route::get('/cast','CastController@index')->name('cast.index');  
+Route::get('/cast','CastController@index')->name('cast.index')->middleware('guest');
 
-Route::get('/cast/create','CastController@create')->name('cast.create');        
-Route::post('/cast','CastController@store')->name('cast.store');
+Route::get('/cast/create','CastController@create')->name('cast.create')->middleware('auth');        
+Route::post('/cast','CastController@store')->name('cast.store')->middleware('auth');
 
-Route::get('/cast/{cast}','CastController@show')->name('cast.show');
-Route::get('/cast/{cast}/edit','CastController@edit')->name('cast.edit');
-Route::put('/cast/{cast}','CastController@update')->name('cast.update');
+Route::get('/cast/{cast}','CastController@show')->name('cast.show')->middleware('guest');
+Route::get('/cast/{cast}/edit','CastController@edit')->name('cast.edit')->middleware('auth');
+Route::put('/cast/{cast}','CastController@update')->name('cast.update')->middleware('auth');
 
-Route::delete('/cast/{cast}','CastController@destroy')->name('cast.destroy');
+Route::delete('/cast/{cast}','CastController@destroy')->name('cast.destroy')->middleware('auth');
 
-Laravel Blade - Penggunaan layout, agar tampilan yang berulang misalnya header, footer, sidebar 
-templating      dan sebagainya tidak perlu dibuat berkali-kali sehingga rawan inkonsistensi.
-|               Pada umumnya layout ditempatkan dalam sebuah folder yang bernama layout 
-|               dalam folder views. Blade merupakan pengaturan tampilan dengan menggunakan HTML markup,
-|               dengan penambahan beberapa directive dari Laravel. 
+----------------------------------------------------------------------------------------
 
+Route::get('/game','GameController@index')->name('game.index');  
 
-*/
+Route::get('/game/create','GameController@create')->name('game.create');        
+Route::post('/game','GameController@store')->name('game.store');
 
+Route::get('/game/{id}','GameController@show')->name('game.show');
+Route::get('/game/{id}/edit','GameController@edit')->name('game.edit');
+Route::put('/game/{id}','GameController@update')->name('game.update');
+
+Route::delete('/game/{id}','GameController@destroy')->name('game.destroy');
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+*/

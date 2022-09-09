@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Film extends Model
 {
-    protected $fillable = ['judul','ringkasan', 'tahun', 'poster', 'genre_id' ];
+    protected $guarded = ['id'];
 
     public function genre()
     {   
@@ -18,7 +18,7 @@ class Film extends Model
         return $this->hasMany('App\Review');
     }
 
-    public function role()
+    public function roles()
     {
         return $this->hasMany('App\Role');
     }

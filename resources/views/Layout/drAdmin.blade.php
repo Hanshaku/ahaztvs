@@ -47,7 +47,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('template/dist/js/demo.js')}}"></script>
 @stack('scripttable')
-@push('scriptfile')
 
 </body>
 </html>

@@ -18,7 +18,7 @@
             <a href="#" class="d-block">Anda Belum Login</a>            
           @endguest
           @auth
-            <a href="#" class="d-block">{{ Auth::user()->name }}    ( {{ Auth::user()->profile->bio}} )
+            <a href="#" class="d-block">{{ Auth::user()->name }} ({{ Auth::user()->profile->bio }} )  </a>
           @endauth
         </div>
       </div>

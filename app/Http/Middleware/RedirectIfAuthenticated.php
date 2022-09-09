@@ -18,8 +18,8 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::HOME);
+        if (Auth::guard($guard)->check()) {             // Jika user telah ter-auth 
+            return redirect(RouteServiceProvider::HOME);// maka akan redirect ke fungsi HOME pada File RouteServiceProvider 
         }
 
         return $next($request);

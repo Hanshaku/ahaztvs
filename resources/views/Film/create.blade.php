@@ -27,19 +27,20 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="ringkasan">Kategori</label>
-            <select name="genre_id" class="form-control" id="">
+            <label for="genre">Kategori</label>
+            <select name="genre" class="form-control" id="">
                 <option value="">----- Pilih salah satu -----</option>
                 @foreach ($genre as $item)
                     <option value="{{ $item->id }}">{{ $item->nama }}</option>                    
                 @endforeach
             </select>
-            @error('genre_id')
+            @error('genre')
                 <div class="alert alert-danger">
                     {{ $message }}
                 </div>
             @enderror
         </div>
+
         <div class="form-group">
             <label for="tahun">Tahun</label>       
             <input type="number" class="form-control" name="tahun" id="tahun" placeholder="Masukkan Tahun Rilis" maxlength="4">

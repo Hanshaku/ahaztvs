@@ -8,6 +8,11 @@ class Cast extends Model
 {
 
     protected $guarded = ['id'];
+
+    public function role()
+    {
+        return $this->hasMany('App\Role'); 
+    }
 /*  
     Deklarasi table yang akan digunakan agar laravel tidak mencari tabel yg pake nama jamak
     protected $table = 'casts';  
@@ -17,9 +22,5 @@ class Cast extends Model
     
 */
 
-    public function role()
-    {
-        return $this->hasMany('App\Role');
-    }
 
 }
