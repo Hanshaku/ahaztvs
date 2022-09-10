@@ -8,10 +8,11 @@ class Film extends Model
 {
     protected $guarded = ['id'];
 
+
     public function genre()
-    {   
+    {
         return $this->belongsTo('App\Genre');
-    }  
+    }
 
     public function review()
     {

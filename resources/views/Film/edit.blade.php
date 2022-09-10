@@ -30,7 +30,7 @@
         </div>
         <div class="form-group">
             <label for="ringkasan">Kategori</label>
-            <select name="genre_id" class="form-control" id="">
+            <select name="genre_id" class="form-control" id="genre_id">
                 <option value="">----- Pilih salah satu -----</option>
                 @foreach ($genre as $item)
                     @if ($item->id === $film->genre_id)
@@ -58,8 +58,17 @@
         
         <div class="form-group">
             <label for="poster">File Poster</label>
-                <input type="file" class="form-control" name="poster" id="poster">
+                <input type="file" class="form-control" name="poster" value="{{asset('public/image/' . $film->poster)}}" id="poster">
                 @error('poster')
+                <div class="alert alert-danger">
+                    {{ $message }}
+                </div>
+                @enderror
+        </div>
+        <div class="form-group">
+            <label for="video">Link Url Video</label>
+                <input type="url" class="form-control" name="video" value="{{$film->video}}" id="video">
+                @error('video')
                 <div class="alert alert-danger">
                     {{ $message }}
                 </div>

@@ -1,11 +1,12 @@
 @extends ('Layout.drAdmin')        <!-- Menambahkan layout drAdmin -->
 
-@section ('title','Detail')              <!-- Judul pd tab browser -->
+@section ('title','Streaming Film')              <!-- Judul pd tab browser -->
 
-@section ('heading','Detail Film')   
+@section ('heading','Streaming Film')   
 
 @section ('body')                       <!-- Ditampilkan pada user -->
-  <img src="{{ asset('image/'.$film->poster) }}" style=" width: 40%;">
+  {{-- <img src="{{ asset('image/'.$film->poster) }}" style=" width: 40%;"> --}}
+  <iframe width="560" height="315" src="{{$film->video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   <h4>{{$film->judul}}</h4>
   <p>Ringkasan :{{$film->ringkasan}}</p>
   <p>Tahun: {{$film->tahun}}</p>
@@ -39,6 +40,6 @@
     <button type="submit" class="btn btn-primary">Kirim</button>
 </form>
   
-  <a href="/film"> Kembali ke halaman peserta </a>
+  <a href="/film"> Kembali ke halaman utama </a>
 @endsection  
 

@@ -10,10 +10,10 @@ use App\Http\Controllers\Controller;
 class FilmController extends Controller
 {
     public function __construct()
-    { 
+    {
         $this->middleware('auth')->except(['index', 'show']); // only
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -21,8 +21,8 @@ class FilmController extends Controller
      */
     public function index()
     {
-        $film = Film::all(); 
-        return view('Film.index', compact('film')); 
+        $film = Film::all();
+        return view('Film.index', compact('film'));
     }
 
     /**
@@ -32,8 +32,8 @@ class FilmController extends Controller
      */
     public function create()
     {
-        $genre = Genre::all(); 
-        return view('Film.create', compact('genre')); 
+        $genre = Genre::all();
+        return view('Film.create', compact('genre'));
     }
 
     /**
@@ -44,16 +44,28 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-    		'judul' => 'required',       
-    		'ringkasan' => 'required',
+
+        $this->validate($request, [
+            'judul' => 'required',
+            'ringkasan' => 'required',
             'tahun' => 'required',
             'poster' => 'required|image|mimes:jpeg,jpg,png,giv,svg|max:2048',
+            'video' => 'required',
             'genre_id' => 'required'
-    	]);
- 
-        $imageName = time().'.'.$request->poster->extension();
+        ]);
+
+
+        $imageName = time() . '.' . $request->poster->extension();
         $request->poster->move(public_path('image'), $imageName);
+
+        // Film::create([
+        //     'judul' => $request->judul,
+        //     'ringkasan' => $request->ringkasan,
+        //     'tahun' => $request->tahun,
+        //     'poster' => $imageName,
+        //     'video' => $request->video,
+        //     'genre_id' => $request->genre_id,
+        // ]);
 
         $film = new Film;
 
@@ -61,10 +73,12 @@ class FilmController extends Controller
         $film->ringkasan = $request->ringkasan;
         $film->tahun = $request->tahun;
         $film->poster = $imageName;
+        $film->video = $request->video;
         $film->genre_id = $request->genre_id;
 
         $film->save();
-    	return redirect('/film');
+
+        return redirect('/film');
     }
 
     /**
@@ -75,7 +89,7 @@ class FilmController extends Controller
      */
     public function show($id)
     {
-        $film = Film::find($id); 
+        $film = Film::find($id);
         return view('Film.show',  compact('film'));
     }
 
@@ -87,9 +101,9 @@ class FilmController extends Controller
      */
     public function edit($id)
     {
-        $genre = Genre::all(); 
+        $genre = Genre::all();
         $film = Film::find($id);
-        return view('Film.edit', compact('film','genre'));
+        return view('Film.edit', compact('film', 'genre'));
     }
 
     /**
@@ -102,34 +116,45 @@ class FilmController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'judul' => 'required', 
+            'judul' => 'required',
             'ringkasan' => 'required',
             'tahun' => 'required',
-            'poster' => 'required|image|mimes:jpeg,jpg,png,giv,svg|max:2048',
+            // 'poster' => 'required|image|mimes:jpeg,jpg,png,giv,svg|max:2048',
+            'video' => 'required',
             'genre_id' => 'required'
-       ]);
+        ]);
 
-       $film = Film::find($id); 
-       
-       if($request->has('poster'))
-            {
-                $imageName = time().'.'.$request->poster->extension();
-                $request->poster->move(public_path('image'), $imageName);
-        
-                $film = new Film;
 
-                $film->judul = $request->judul;
-                $film->ringkasan = $request->ringkasan;
-                $film->tahun = $request->tahun;
-                $film->poster = $imageName;          // ambil dri time()
-                $film->genre_id = $request->genre_id;
-            } else{
-                $film->judul = $request->judul;
-                $film->ringkasan = $request->ringkasan;
-                $film->tahun = $request->tahun;
-                $film->genre_id = $request->genre_id;
-                }
-            
+        $film = Film::find($id);
+
+        if ($request->has('poster')) {
+            $imageName = time() . '.' . $request->poster->extension();
+            $request->poster->move(public_path('image'), $imageName);
+
+            // $film = new Film;
+            $file_path = public_path() . '/image/' . $film->poster;
+            unlink($file_path);
+
+            // $image_path = "/images/$request->poster";  // Value is not URL but directory file path
+            // if (File::exists($image_path)) {
+            //     File::delete($image_path);
+            // }
+
+            $film->judul = $request->judul;
+            $film->ringkasan = $request->ringkasan;
+            $film->tahun = $request->tahun;
+            $film->poster = $imageName;          // ambil dri time()
+            $film->video = $request->video;
+            $film->genre_id = $request->genre_id;
+        } else {
+            $film->judul = $request->judul;
+            $film->ringkasan = $request->ringkasan;
+            $film->tahun = $request->tahun;
+            $film->video = $request->video;
+            $film->genre_id = $request->genre_id;
+        }
+
+
         $film->save();
         return redirect('/film');
     }
@@ -139,11 +164,11 @@ class FilmController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
-     
+
+
     public function destroy($id)
     {
-        $film = Film::find($id); 
+        $film = Film::find($id);
         $film->delete();
         return redirect('/film');
     }

@@ -17,10 +17,10 @@ class GenreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()     
-    {// Collection - Pembungkus dalam sebuah array agar dpt menggunakan bnyk fitur function
+    public function index()
+    { // Collection - Pembungkus dalam sebuah array agar dpt menggunakan bnyk fitur function
         $genre = Genre::all(); // Model::Select * From Genres
-        return view('Genre.index', compact('genre')); 
+        return view('Genre.index', compact('genre'));
     }
 
     /**
@@ -30,7 +30,7 @@ class GenreController extends Controller
      */
     public function create()
     {
-        return view('Genre.create'); 
+        return view('Genre.create');
     }
 
     /**
@@ -41,15 +41,15 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
-    	$this->validate($request,[
-    		'nama' => 'required'       // Memvalidasi data nama berisikan inputan / tidak pd form
-    	]);
- 
+        $this->validate($request, [
+            'nama' => 'required'       // Memvalidasi data nama berisikan inputan / tidak pd form
+        ]);
+
         Genre::create([
-    		'nama' => $request->nama,  // Mengirimkan data 'nama' berisikan inputan dr nama kedalam DB
-    	]);
- 
-    	return redirect('/Genre');
+            'nama' => $request->nama,  // Mengirimkan data 'nama' berisikan inputan dr nama kedalam DB
+        ]);
+
+        return redirect('/genre');
     }
 
     /**
@@ -60,7 +60,7 @@ class GenreController extends Controller
      */  //Atau merubah parameter $id dgn memakai nama class 
     public function show($id)   //  (Genre $genre) - "Key Genre" => "value key $genre"
     {                           //         v
-        $genre = Genre::find($id);//compact('genre')  -> sehingga line cari($id) dapat dihapus penggunaannya
+        $genre = Genre::find($id); //compact('genre')  -> sehingga line cari($id) dapat dihapus penggunaannya
         return view('Genre.show',  compact('genre'));
     }
 
@@ -72,7 +72,7 @@ class GenreController extends Controller
      */  //Atau merubah parameter $id dgn memakai nama class 
     public function edit($id)   //  (Genre $genre)
     {                           //          v
-        $genre = Genre::find($id);//compact('genre') -> sehingga line cari($id) dapat dihapus penggunaannya
+        $genre = Genre::find($id); //compact('genre') -> sehingga line cari($id) dapat dihapus penggunaannya
         return view('Genre.edit', compact('genre'));
     }
 
@@ -85,17 +85,17 @@ class GenreController extends Controller
      */  //Atau merubah parameter $id dgn memakai nama class 
     public function update($id, Request $request) //  (Genre $genre)
     {
-       $request->validate([
+        $request->validate([
             'nama' => 'required|unique:genres'  // genres merupakan tabel pd DB
 
-       ]);
+        ]);
 
-       $genre = Genre::find($id); // sehingga line cari($id) dapat dihapus penggunaannya
-       $genre->nama = $request->nama;    // Mengupdate data 'nama' berisikan inputan dr nama kedalam DB 
-                                         // berdasarkan find($id) atau sqlnya where id = $id
+        $genre = Genre::find($id); // sehingga line cari($id) dapat dihapus penggunaannya
+        $genre->nama = $request->nama;    // Mengupdate data 'nama' berisikan inputan dr nama kedalam DB 
+        // berdasarkan find($id) atau sqlnya where id = $id
 
-       $genre->update();
-       return redirect('/genre');
+        $genre->update();
+        return redirect('/genre');
     }
 
     /**
@@ -109,6 +109,5 @@ class GenreController extends Controller
         $genre = Genre::find($id); // sehingga line cari($id) dapat dihapus penggunaannya
         $genre->delete();
         return redirect('/genre');
-
     }
 }
