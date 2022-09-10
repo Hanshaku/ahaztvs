@@ -15,11 +15,15 @@ class CreateGamesTable extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->text('gameplay');
-            $table->string('developer'); 
-            $table->integer('year');
+            $table->string('nama')->nullable();
 
+            $table->unsignedBigInteger('cast_id')->nullable();
+            $table->foreign('cast_id')->references('id')->on('casts');
+           
+            $table->unsignedBigInteger('film_id')->nullable();
+            $table->foreign('film_id')->references('id')->on('films');
+
+            $table->timestamp('deleted_at');
             $table->timestamps();
         });
     }

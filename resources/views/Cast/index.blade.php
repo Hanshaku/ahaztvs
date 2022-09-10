@@ -11,8 +11,7 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nama</th>
-                <th scope="col">Umur</th>
-                <th scope="col">Bio</th>
+
                 <th scope="col">Actions</th>
               </tr>
             </thead>
@@ -21,8 +20,7 @@
                     <tr>
                         <td>{{$key + 1}}</th>
                         <td>{{$value->nama}}</td>
-                        <td>{{$value->umur}}</td>
-                        <td>{{$value->bio}}</td>
+
                         <td>
                             <a href="/cast/{{$value->id}}" class="btn btn-info">Show</a>
                             <a href="/cast/{{$value->id}}/edit" class="btn btn-primary">Edit</a>
@@ -35,7 +33,9 @@
                     </tr>
                 @empty
                     <tr colspan="3">
-                        <td>No data</td>
+                        <td class="text-center">
+                            No data available 
+                        </td>
                     </tr>  
                 @endforelse              
             </tbody>

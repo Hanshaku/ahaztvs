@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolesTable extends Migration
+class CreateRatingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('ratings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nama')->nullable();
+            $table->string('nama');
+            $table->string('keterangan');
 
-            $table->unsignedBigInteger('cast_id')->nullable();
-            $table->foreign('cast_id')->references('id')->on('casts');
-           
-            $table->unsignedBigInteger('film_id')->nullable();
-            $table->foreign('film_id')->references('id')->on('films');
 
             $table->timestamp('deleted_at');
             $table->timestamps();
@@ -35,6 +31,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('ratings');
     }
 }

@@ -19,7 +19,7 @@
                 </div>
             @enderror
         </div>
-        <div class="form-group">
+<!--        <div class="form-group">
             <label for="umur">Umur</label>
             <input type="text" class="form-control" name="umur" value="{{$cast->umur}}"  id="umur" placeholder="Masukkan Umur">
             @error('umur')
@@ -36,7 +36,7 @@
                     {{ $message }}
                 </div>
             @enderror
-        </div>
+        </div> -->
         <button type="submit" class="btn btn-primary">Edit</button>
     </form>
 </div>

@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Cast extends Model
 {
 
-    protected $guarded = ['id'];
+    protected $guarded = [];
 
-    public function role()
+    public function films()
     {
-        return $this->hasMany('App\Role'); 
+        return $this->hasMany('App\Film'); 
     }
+
 /*  
     Deklarasi table yang akan digunakan agar laravel tidak mencari tabel yg pake nama jamak
     protected $table = 'casts';  

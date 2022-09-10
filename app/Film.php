@@ -6,20 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Film extends Model
 {
-    protected $guarded = ['id'];
+    protected $guarded = [];
 
     public function genre()
     {   
         return $this->belongsTo('App\Genre');
     }  
 
-    public function review()
+    public function reviews()
     {
         return $this->hasMany('App\Review');
     }
 
-    public function roles()
+    public function rating()
     {
-        return $this->hasMany('App\Role');
+        return $this->belongsTo('App\Rating');
     }
 }

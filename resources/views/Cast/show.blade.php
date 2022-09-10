@@ -2,15 +2,14 @@
 
 @section ('title','Detail')              <!-- Judul pd tab browser -->
 
-@section ('heading','Detail Peserta')   
+@section ('heading','Rating')   
 
 @section ('body')                       <!-- Ditampilkan pada user -->
-  <h2>Menampilkan Data Peserta Cast ke-{{$cast->id}} </h2>
+  <h2>Menampilkan Data Rating ke-{{$rating->id}} </h2>
   <hr>
-  <h4>Nama Lengkap : {{$cast->nama}}</h4>
-  <p>Umur :{{$cast->umur}}</p>
-  <p>Bio Terakhir : {{$cast->bio}}</p>
+  <h4>Nama : {{$rating->nama}}</h4>
 
-  <a href="/cast"> Kembali ke halaman peserta </a>
+
+  <a href="/rating"> Kembali ke halaman peserta </a>
 @endsection  
 

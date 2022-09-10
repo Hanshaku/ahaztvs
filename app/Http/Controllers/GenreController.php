@@ -42,14 +42,14 @@ class GenreController extends Controller
     public function store(Request $request)
     {
     	$this->validate($request,[
-    		'nama' => 'required'       // Memvalidasi data nama berisikan inputan / tidak pd form
+    		'nama' => 'required|unique:genres'       // Memvalidasi data nama berisikan inputan / tidak pd form
     	]);
  
         Genre::create([
     		'nama' => $request->nama,  // Mengirimkan data 'nama' berisikan inputan dr nama kedalam DB
     	]);
  
-    	return redirect('/Genre');
+    	return redirect('/genre');
     }
 
     /**

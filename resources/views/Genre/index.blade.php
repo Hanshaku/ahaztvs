@@ -33,7 +33,9 @@
                     </tr>
                 @empty
                     <tr colspan="3">
-                        <td>No data</td>
+                        <td class="text-center">
+                            No data available 
+                        </td>
                     </tr>  
                 @endforelse              
             </tbody>

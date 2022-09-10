@@ -15,11 +15,16 @@ class CreatePlatformsTable extends Migration
     {
         Schema::create('platforms', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            
-            $table->unsignedBigInteger('game_id')->nullable();
-            $table->foreign('game_id')->references('id')->on('games');
+            $table->text('content');
+            $table->integer('point')->nullable();
 
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+           
+            $table->unsignedBigInteger('film_id')->nullable();
+            $table->foreign('film_id')->references('id')->on('films');
+            
+            $table->timestamp('deleted_at');
             $table->timestamps();
         });
     }

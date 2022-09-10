@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Film;
+use App\Rating;
 use App\Genre;
+use App\Role;
+use App\Film;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -32,8 +34,10 @@ class FilmController extends Controller
      */
     public function create()
     {
+        $rating = Rating::all(); 
         $genre = Genre::all(); 
-        return view('Film.create', compact('genre')); 
+        
+        return view('Film.create', compact('genre','rating')); 
     }
 
     /**
@@ -44,25 +48,31 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-    		'judul' => 'required',       
-    		'ringkasan' => 'required',
-            'tahun' => 'required',
-            'poster' => 'required|image|mimes:jpeg,jpg,png,giv,svg|max:2048',
-            'genre_id' => 'required'
-    	]);
- 
+ /*       $casts_arr = explode(',', $request["casts"]);
+     
+        $cast_ids = [];
+        foreach($casts_arr as $cast_name){
+            $cast = Cast::where("nama", $cast_name)->first();
+            if($cast) {
+                $cast_ids[] = $cast->id;
+            } else {
+                $new_cast = Cast::create(["nama" => $cast_name]);
+                $cast_ids[] = $new_cast->id;
+            }
+        }
+                $film->casts()->sync($cast_ids);
+*/
         $imageName = time().'.'.$request->poster->extension();
         $request->poster->move(public_path('image'), $imageName);
 
-        $film = new Film;
-
-        $film->judul = $request->judul;
-        $film->ringkasan = $request->ringkasan;
-        $film->tahun = $request->tahun;
-        $film->poster = $imageName;
-        $film->genre_id = $request->genre_id;
-
+        $film = Film::create([
+            'judul' => $request['judul'],
+            'ringkasan' => $request['ringkasan'],
+            'tahun' => $request['tahun'],
+            'poster' => $imageName,
+            'genre_id' => $request['genre_id'],
+        ]);
+  
         $film->save();
     	return redirect('/film');
     }
@@ -87,9 +97,10 @@ class FilmController extends Controller
      */
     public function edit($id)
     {
-        $genre = Genre::all(); 
+        $genre = Genre::all();
+        $rating = Rating::all(); 
         $film = Film::find($id);
-        return view('Film.edit', compact('film','genre'));
+        return view('Film.edit', compact('film','genre', 'rating'));
     }
 
     /**

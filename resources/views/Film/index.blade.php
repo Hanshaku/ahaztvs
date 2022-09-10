@@ -9,7 +9,7 @@
 <div class="row" >
     @forelse ($film as $value)
         <div class="col-4">
-            <div class="card"  >
+            <div class="card">
                 <img src="{{ asset('image/'.$value->poster) }}" class="car-img-top" style=" width: 100%; height: 15vw; object-fit: cover;" alt="...">
                     <div class="card-body">
                         <span class="badge badge-info">{{ $value->genre->nama }}</span>
@@ -29,9 +29,9 @@
             </div>
         </div>
     @empty
-    <div class="card">
-        <div class="card-body">
-          No data
+    <div class="container-fluid card">
+        <div class="card-body text-center">
+          No data available 
         </div>
       </div>
 </div> 

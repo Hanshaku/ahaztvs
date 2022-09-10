@@ -8,7 +8,7 @@ class Genre extends Model
 {
     protected $guarded = ['id'];
 
-    public function film()
+    public function films()
     {  
         return $this->hasMany('App\Film'); 
     }  
