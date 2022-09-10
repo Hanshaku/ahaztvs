@@ -27,11 +27,10 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="rating">Kategori</label>
             <select name="genre_id" class="form-control" id="">
+            <label for="genre_id">Kategori</label>
                 <option value="">----- Pilih salah satu -----</option>
                 @foreach ($genre as $item)
-                    <option value="{{ $item->id }}">{{ $item->nama }}</option>                    
                 @endforeach
             </select>
             @error('genre_id')
@@ -70,6 +69,15 @@
             <label for="poster">File Gambar</label>
                 <input type="file" class="form-control" name="poster" id="poster">
                 @error('poster')
+                    <div class="alert alert-danger">
+                        {{ $message }}
+                    </div>
+                 @enderror
+        </div>
+        <div class="form-group">
+            <label for="video">Link URL Video</label>
+                <input type="url" class="form-control" name="video" id="video">
+                @error('video')
                     <div class="alert alert-danger">
                         {{ $message }}
                     </div>

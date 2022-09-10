@@ -2,10 +2,10 @@
 
 @section ('title','Detail')              <!-- Judul pd tab browser -->
 
-@section ('heading','Detail Peserta')   
+@section ('heading','Detail ')   
 
 @section ('body')                       <!-- Ditampilkan pada user -->
-  <h2>Menampilkan Data Peserta Genre ke-{{$genre->id}} </h2>
+  <h2>Menampilkan Data Genre ke-{{$genre->id}} </h2>
   <hr>
   <h4>Nama : {{$genre->nama}}</h4>
 

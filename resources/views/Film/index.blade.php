@@ -16,7 +16,7 @@
                         <h3>{{ $value->judul }}</h3>
                         <p class="card-text"> {{ Str::limit($value->ringkasan, 300) }}</p>
                         <div class="d-flex justify-content-start">
-                            <a href="/film/{{$value->id}}" class="btn btn-info mr-2">Show</a>
+                            <a href="/film/{{$value->id}}" class="btn btn-info mr-2">Tonton</a>
                             <a href="/film/{{$value->id}}/edit" class="btn btn-primary mr-2">Edit</a>
                             <form action="/film/{{$value->id}}" method="POST">
                             @csrf

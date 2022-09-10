@@ -11,7 +11,7 @@
         @csrf
         @method('PUT')
         <div class="form-group">
-            <label for="nama">Nama Lengkap</label>
+            <label for="nama">Nama Genre</label>
             <input type="text" class="form-control" name="nama" value="{{$genre->nama}}" id="nama" placeholder="Masukkan Nama">
             @error('nama')
                 <div class="alert alert-danger">
