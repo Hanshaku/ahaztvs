@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Rating;
 use App\Genre;
 use App\Film;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -33,10 +34,10 @@ class FilmController extends Controller
      */
     public function create()
     {
-        $rating = Rating::all(); 
-        $genre = Genre::all(); 
-        
-        return view('Film.create', compact('genre','rating')); 
+        $rating = Rating::all();
+        $genre = Genre::all();
+
+        return view('Film.create', compact('genre', 'rating'));
     }
 
     /**
@@ -87,7 +88,9 @@ class FilmController extends Controller
     public function show($id)
     {
         $film = Film::find($id);
-        return view('Film.show',  compact('film'));
+        $rating = Rating::find($id);
+        $user = User::find($id);
+        return view('Film.show',  compact('film', 'rating', 'user'));
     }
 
     /**
@@ -99,9 +102,9 @@ class FilmController extends Controller
     public function edit($id)
     {
         $genre = Genre::all();
-        $rating = Rating::all(); 
+        $rating = Rating::all();
         $film = Film::find($id);
-        return view('Film.edit', compact('film','genre', 'rating'));
+        return view('Film.edit', compact('film', 'genre', 'rating'));
         $film = Film::find($id);
         return view('Film.edit', compact('film', 'genre'));
     }
