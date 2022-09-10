@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Rating;
 use App\Genre;
-use App\Role;
 use App\Film;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -38,8 +37,6 @@ class FilmController extends Controller
         $genre = Genre::all(); 
         
         return view('Film.create', compact('genre','rating')); 
-        $genre = Genre::all();
-        return view('Film.create', compact('genre'));
     }
 
     /**
@@ -50,53 +47,21 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
- /*       $casts_arr = explode(',', $request["casts"]);
-     
-        $cast_ids = [];
-        foreach($casts_arr as $cast_name){
-            $cast = Cast::where("nama", $cast_name)->first();
-            if($cast) {
-                $cast_ids[] = $cast->id;
-            } else {
-                $new_cast = Cast::create(["nama" => $cast_name]);
-                $cast_ids[] = $new_cast->id;
-            }
-        }
-                $film->casts()->sync($cast_ids);
-*/
-        $imageName = time().'.'.$request->poster->extension();
-        $request->poster->move(public_path('image'), $imageName);
-
-        $film = Film::create([
-            'judul' => $request['judul'],
-            'ringkasan' => $request['ringkasan'],
-            'tahun' => $request['tahun'],
-            'poster' => $imageName,
-            'genre_id' => $request['genre_id'],
-        ]);
-  
-
         $this->validate($request, [
             'judul' => 'required',
             'ringkasan' => 'required',
             'tahun' => 'required',
             'poster' => 'required|image|mimes:jpeg,jpg,png,giv,svg|max:2048',
             'video' => 'required',
-            'genre_id' => 'required'
+            'genre_id' => 'required',
+            'rating_id' => 'required'
         ]);
 
 
         $imageName = time() . '.' . $request->poster->extension();
         $request->poster->move(public_path('image'), $imageName);
 
-        // Film::create([
-        //     'judul' => $request->judul,
-        //     'ringkasan' => $request->ringkasan,
-        //     'tahun' => $request->tahun,
-        //     'poster' => $imageName,
-        //     'video' => $request->video,
-        //     'genre_id' => $request->genre_id,
-        // ]);
+
 
         $film = new Film;
 
@@ -106,6 +71,7 @@ class FilmController extends Controller
         $film->poster = $imageName;
         $film->video = $request->video;
         $film->genre_id = $request->genre_id;
+        $film->rating_id = $request->rating_id;
 
         $film->save();
 
@@ -155,7 +121,8 @@ class FilmController extends Controller
             'tahun' => 'required',
             // 'poster' => 'required|image|mimes:jpeg,jpg,png,giv,svg|max:2048',
             'video' => 'required',
-            'genre_id' => 'required'
+            'genre_id' => 'required',
+            'rating_id' => 'required'
         ]);
 
 
@@ -180,12 +147,14 @@ class FilmController extends Controller
             $film->poster = $imageName;          // ambil dri time()
             $film->video = $request->video;
             $film->genre_id = $request->genre_id;
+            $film->rating_id = $request->rating_id;
         } else {
             $film->judul = $request->judul;
             $film->ringkasan = $request->ringkasan;
             $film->tahun = $request->tahun;
             $film->video = $request->video;
             $film->genre_id = $request->genre_id;
+            $film->rating_id = $request->rating_id;
         }
 
 

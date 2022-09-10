@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Genre;
+use App\Rating;
 
 class GenreController extends Controller
 {
@@ -19,8 +20,8 @@ class GenreController extends Controller
      */
     public function index()
     { // Collection - Pembungkus dalam sebuah array agar dpt menggunakan bnyk fitur function
-        $genre = Genre::all(); // Model::Select * From Genres
-        return view('Genre.index', compact('genre'));
+        $genres = Genre::all(); // Model::Select * From Genres
+        return view('Genre.index', compact('genres'));
     }
 
     /**
@@ -68,9 +69,9 @@ class GenreController extends Controller
      * @return \Illuminate\Http\Response
      */  //Atau merubah parameter $id dgn memakai nama class 
     public function show($id)   //  (Genre $genre) - "Key Genre" => "value key $genre"
-    {                           //         v
-        $genre = Genre::find($id); //compact('genre')  -> sehingga line cari($id) dapat dihapus penggunaannya
-        return view('Genre.show',  compact('genre'));
+    {   $ratings = Rating::find($id); //    v
+        $genres = Genre::find($id); //compact('genre')  -> sehingga line cari($id) dapat dihapus penggunaannya
+        return view('Genre.show',  compact('genres','ratings'));
     }
 
     /**
@@ -81,8 +82,8 @@ class GenreController extends Controller
      */  //Atau merubah parameter $id dgn memakai nama class 
     public function edit($id)   //  (Genre $genre)
     {                           //          v
-        $genre = Genre::find($id); //compact('genre') -> sehingga line cari($id) dapat dihapus penggunaannya
-        return view('Genre.edit', compact('genre'));
+        $genres = Genre::find($id); //compact('genre') -> sehingga line cari($id) dapat dihapus penggunaannya
+        return view('Genre.edit', compact('genres'));
     }
 
     /**

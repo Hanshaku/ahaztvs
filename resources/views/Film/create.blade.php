@@ -43,14 +43,14 @@
         </div>
 
         <div class="form-group">
-            <label for="rating">Rating</label>
-            <select name="rating" class="form-control" id="">
+            <label for="rating_id">Rating</label>
+            <select name="rating_id" class="form-control" id="">
                 <option value="">----- Pilih salah satu -----</option>
                 @foreach ($rating as $item)
                     <option value="{{ $item->id }}">{{ $item->nama }}</option>                    
                 @endforeach
             </select>
-            @error('rating')
+            @error('rating_id')
                 <div class="alert alert-danger">
                     {{ $message }}
                 </div>

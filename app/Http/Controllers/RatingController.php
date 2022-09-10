@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Rating;
+use App\Genre;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class RatingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']); // only
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +21,8 @@ class RatingController extends Controller
      */
     public function index()
     {
-        $rating = Rating::all();
-        return view('Rating.index', compact('rating')); 
+        $ratings = Rating::all();
+        return view('Rating.index', compact('ratings')); 
     }
 
     /**
@@ -56,12 +62,13 @@ class RatingController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response 
      */
     public function show($id)
     {
-        $rating = Rating::find($id);
-        return view('Rating.show',  compact('rating'));
+        $genres = Genre::find($id);
+        $ratings = Rating::find($id);
+        return view('Rating.show',  compact('ratings','genres'));
     }
 
     /**

@@ -11,20 +11,26 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nama</th>
-
+                <th scope="col">List Film</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
-                @forelse ($genre as $key=>$value)
+                @forelse ($genres as $index=>$genre)
                     <tr>
-                        <td>{{$key + 1}}</th>
-                        <td>{{$value->nama}}</td>
-
+                        <td>{{$index + 1}}</th>
+                        <td>{{$genre->nama}}</td>
                         <td>
-                            <a href="/genre/{{$value->id}}" class="btn btn-info">Show</a>
-                            <a href="/genre/{{$value->id}}/edit" class="btn btn-primary">Edit</a>
-                            <form action="/genre/{{$value->id}}" method="POST">
+                            <ul>
+                                @foreach ($genre->films as $film)
+                                    <li>{{ $film->judul }}</li>   
+                                @endforeach
+                            </ul>
+                        </td>
+                        <td>
+                            <a href="/genre/{{$genre->id}}" class="btn btn-info">Show</a>
+                            <a href="/genre/{{$genre->id}}/edit" class="btn btn-primary">Edit</a>
+                            <form action="/genre/{{$genre->id}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <input type="submit" class="btn btn-danger my-1" value="Delete">
@@ -33,9 +39,7 @@
                     </tr>
                 @empty
                     <tr colspan="3">
-                        <td class="text-center">
-                            No data available 
-                        </td>
+                        <td>No data</td>
                     </tr>  
                 @endforelse              
             </tbody>

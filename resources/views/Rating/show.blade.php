@@ -5,11 +5,22 @@
 @section ('heading','Detail Rating')   
 
 @section ('body')                       <!-- Ditampilkan pada user -->
-  <h2>Menampilkan Data Rating ke-{{$rating->id}} </h2>
-  <hr>
-  <h4>Rating Film {{$rating->nama}}</h4>
-
-
-  <a href="/rating"> Kembali ke halaman peserta </a>
+<h2>Menampilkan List Film dengan rating {{$ratings->nama}} </h2>
+<hr>
+<div class="row">
+  @foreach ($ratings->films as $film)
+    <div class="col-4">
+      <div class="card">
+        <img src="{{ asset('image/'.$film->poster) }}" class="card-img-top" alt="thumbnail">
+        <div class="card-body">
+          <span class="badge badge-warning"> {{ $genres->nama }}</span> 
+          <h3>{{ $film->judul }}</h3>
+          <p class="card-text"> {{ $film->ringkasan }}</p>
+        </div>
+      </div>
+    </div>
+  @endforeach
+</div>
+  <a href="/rating"> Kembali ke halaman seelumnya </a>
 @endsection  
 
