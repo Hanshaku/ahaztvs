@@ -17,6 +17,7 @@ class CreateFilmsTable extends Migration
             $table->bigIncrements('id');
             $table->string('judul')->nullable();
             $table->text('ringkasan');
+            $table->string('rating');
             $table->integer('tahun');
             $table->string('poster');
             $table->string('video');

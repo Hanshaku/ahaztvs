@@ -26,14 +26,16 @@
                 </div>
             @enderror
         </div>
+
         <div class="form-group">
+            <label for="genre_id">Genre</label>
             <select name="genre_id" class="form-control" id="">
-            <label for="genre_id">Kategori</label>
                 <option value="">----- Pilih salah satu -----</option>
                 @foreach ($genre as $item)
+                    <option value="{{ $item->id }}">{{ $item->nama }}</option>                    
                 @endforeach
             </select>
-            @error('genre_id')
+            @error('genre')
                 <div class="alert alert-danger">
                     {{ $message }}
                 </div>
