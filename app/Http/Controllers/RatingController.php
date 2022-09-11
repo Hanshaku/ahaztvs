@@ -99,6 +99,7 @@ class RatingController extends Controller
 
         $rating = Rating::find($id); // sehingga line cari($id) dapat dihapus penggunaannya
         $rating->nama = $request->nama;    // Mengupdate data 'nama' berisikan inputan dr nama kedalam DB 
+        $rating->keterangan = $request->keterangan;
 
         $rating->update();
         return redirect('/rating');
