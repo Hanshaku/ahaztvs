@@ -2,6 +2,19 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/tes', function(){
+    return view('tes.home');
+});
+Route::get('/ini', function(){
+    return view('inifilm.index');
+});
+Route::get('/admin', function(){
+    return view('admin.layoutadmin.master');
+});
+Route::get('/chart', function(){
+    return view('admin.index');
+});
 /*
 |--------------------------------------------------------------------------
 | Web Routes
