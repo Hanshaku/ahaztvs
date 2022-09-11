@@ -17,7 +17,7 @@
     <div class="card">
       <div class="card-body">
         <h3>{{ $user->name }}</h3>
-              <p class="card-text"> {{ $rating->keterangan }}</p>
+              <p class="card-text"> {{ $value->keterangan }}</p>
              
           </div>
   </div>

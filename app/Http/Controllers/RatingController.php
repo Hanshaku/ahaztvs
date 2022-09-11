@@ -93,8 +93,9 @@ class RatingController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required',
-            'keterangan' => 'required'
+            'nama' => 'required',  
+            'keterangan' => 'required'    
+
         ]);
 
         $rating = Rating::find($id); // sehingga line cari($id) dapat dihapus penggunaannya

@@ -67,10 +67,10 @@ class GenreController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */  //Atau merubah parameter $id dgn memakai nama class 
-    public function show($id)   //  (Genre $genre) - "Key Genre" => "value key $genre"
-    {   $ratings = Rating::find($id); //    v
-        $genres = Genre::find($id); //compact('genre')  -> sehingga line cari($id) dapat dihapus penggunaannya
+     */  
+    public function show($id)   
+    {   $ratings = Rating::find($id); 
+        $genres = Genre::find($id); 
         return view('Genre.show',  compact('genres','ratings'));
     }
 
@@ -79,11 +79,11 @@ class GenreController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */  //Atau merubah parameter $id dgn memakai nama class 
-    public function edit($id)   //  (Genre $genre)
-    {                           //          v
-        $genres = Genre::find($id); //compact('genre') -> sehingga line cari($id) dapat dihapus penggunaannya
-        return view('Genre.edit', compact('genres'));
+     */  
+    public function edit($id)   
+    {                           
+        $genre = Genre::find($id); 
+        return view('Genre.edit', compact('genre'));
     }
 
     /**
@@ -92,17 +92,16 @@ class GenreController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */  //Atau merubah parameter $id dgn memakai nama class 
-    public function update($id, Request $request) //  (Genre $genre)
+     */  
+    public function update($id, Request $request) 
     {
         $request->validate([
-            'nama' => 'required|unique:genres'  // genres merupakan tabel pd DB
-
+            'nama' => 'required'  
         ]);
 
-        $genre = Genre::find($id); // sehingga line cari($id) dapat dihapus penggunaannya
-        $genre->nama = $request->nama;    // Mengupdate data 'nama' berisikan inputan dr nama kedalam DB 
-        // berdasarkan find($id) atau sqlnya where id = $id
+        $genre = Genre::find($id); 
+        $genre->nama = $request->nama;   
+    
 
         $genre->update();
         return redirect('/genre');
@@ -113,10 +112,10 @@ class GenreController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */ //Atau merubah parameter $id dgn memakai nama class 
-    public function destroy($id) //  (Genre $genre)
+     */ 
+    public function destroy($id)
     {
-        $genre = Genre::find($id); // sehingga line cari($id) dapat dihapus penggunaannya
+        $genre = Genre::find($id); 
         $genre->delete();
         return redirect('/genre');
     }

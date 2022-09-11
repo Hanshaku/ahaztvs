@@ -6,7 +6,6 @@
 
 @section ('body')    
 <div>
-    <h2>Edit film {{$film->id}}</h2>
     <form action="/film/{{$film->id}}" method="POST" enctype="multipart/form-data"><!-- force method POST menjadi PUT -->
         @csrf
         @method('PUT')
