@@ -6,7 +6,6 @@
 
 @section ('body')    
 <div>
-    <h2>Edit rating {{$rating->id}}</h2>
     <form action="/rating/{{$rating->id}}" method="POST"><!-- force method POST menjadi PUT -->
         @csrf
         @method('PUT')

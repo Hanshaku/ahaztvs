@@ -102,8 +102,7 @@ class FilmController extends Controller
         $rating = Rating::all(); 
         $film = Film::find($id);
         return view('Film.edit', compact('film','genre', 'rating'));
-        $film = Film::find($id);
-        return view('Film.edit', compact('film', 'genre'));
+
     }
 
     /**

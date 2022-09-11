@@ -93,7 +93,7 @@ class RatingController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required|unique:ratings',  
+            'nama' => 'required',  
             'keterangan' => 'required'    
         ]);
 

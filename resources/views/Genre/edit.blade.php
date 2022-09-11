@@ -6,7 +6,6 @@
 
 @section ('body')    
 <div>
-    <h2>Edit genre {{$genres->nama}}</h2>
     <form action="/genre/{{$genre->id}}" method="POST"><!-- force method POST menjadi PUT -->
         @csrf
         @method('PUT')
