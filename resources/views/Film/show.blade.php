@@ -13,16 +13,16 @@
 
   <h2>Komentar</h2>
 
-  @foreach ($rating as $value)
+  {{-- @foreach ($rating as $value) --}}
     <div class="card">
       <div class="card-body">
         <h3>{{ $user->name }}</h3>
-              <p class="card-text"> {{ $value->keterangan }}</p>
+              <p class="card-text"> {{ $rating->keterangan }}</p>
              
           </div>
   </div>
     
-  @endforeach
+  {{-- @endforeach --}}
   <form action="/review" method="POST">
     @csrf
 
