@@ -28,10 +28,10 @@
             <a class="nav-link" href="#">Acara TV</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/">Film</a>
+            <a class="nav-link" href="/film">Film</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/genre/{id}">Genre</a>
+            <a class="nav-link" href="/genre">Genre</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">publisher</a>
