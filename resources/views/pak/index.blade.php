@@ -6,7 +6,7 @@
   <title> Dashboard Admin</title>
 
   <!-- Google Font: Source Sans Pro -->
-  @include('admin.komponenadmin._assetatas')
+  @include('pak.komponenadmin._assetatas')
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -163,13 +163,13 @@
         </div>
 
 
-        @include('admin.index')
+       
 
         
 
         <!-- Main row -->
-        @include('admin.komponenadmin.table')
-        @include('admin.komponenadmin.download')
+        @include('pak.komponenadmin.table')
+        @include('pak.komponenadmin.download')
 
       </div><!--/. container-fluid -->
     </section>
@@ -195,7 +195,7 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-@include('admin.komponenadmin._asetmasterbawah')
+@include('pak.komponenadmin._asetmasterbawah')
 @stack('chart')
 </body>
 </html>
