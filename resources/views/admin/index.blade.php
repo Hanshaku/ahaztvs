@@ -62,7 +62,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/invoice.html" class="nav-link">
+                <a href="/genre" class="nav-link">
                   <i class="far nav-icon fas fa-book"></i>
                   <p>Genre</p>
                 </a>
@@ -163,7 +163,7 @@
         </div>
 
 
-        @include('admin.index')
+       
 
         
 

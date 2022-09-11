@@ -4,7 +4,7 @@
 <div class="wrapper">
     <!-- navbar -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark mb-5">
-      <a class="navbar-brand" href="#">AHAZ-TV</a>
+      <a class="navbar-brand" href="/welcome">AHAZ-TV</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -20,7 +20,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#"
+            <a class="nav-link" href="/welcome"
               >Home <span class="sr-only">(current)</span></a
             >
           </li>
@@ -28,10 +28,10 @@
             <a class="nav-link" href="#">Acara TV</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Film</a>
+            <a class="nav-link" href="/">Film</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Genre</a>
+            <a class="nav-link" href="/genre/{id}">Genre</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">publisher</a>

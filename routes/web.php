@@ -3,8 +3,15 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/welcome', function(){
+    return view('FormHTML.welcome');
+});
+
 Route::get('/tes', function(){
-    return view('pak.index');
+    return view('admin.index');
+});
+Route::get('/master', function(){
+    return view('admin.layoutadmin.master');
 });
 // Route::get('/ini', function(){
 //     return view('inifilm.index');

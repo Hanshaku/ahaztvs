@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+  <title> Dashboard Admin</title>
 
   <!-- Google Font: Source Sans Pro -->
   @include('admin.komponenadmin._assetatas')
@@ -11,28 +11,25 @@
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
 
-  <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__wobble" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-  </div>
-
   <!-- Navbar -->
   <div class="container">
     <div class="row">
       
       @include('komponen.header')
     </div>
-  </div>
-  <div class="content">
-    @yield('konten')
-  </div>
-  {{-- footer --}}
- @include('admin.komponenadmin.footer')
+<div class="margin" style="margin-top: 10%">
+
+  @yield('konten')
+
+</div>
+
+  <!-- Main Footer -->
+  @include('komponen.footer')
 </div>
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
 @include('admin.komponenadmin._asetmasterbawah')
-
+@stack('chart')
 </body>
 </html>
