@@ -22,7 +22,7 @@ class RatingController extends Controller
     public function index()
     {
         $ratings = Rating::all();
-        return view('Rating.index', compact('ratings')); 
+        return view('Rating.index', compact('ratings'));
     }
 
     /**
@@ -32,7 +32,7 @@ class RatingController extends Controller
      */
     public function create()
     {
-        return view('Rating.create'); 
+        return view('Rating.create');
     }
 
     /**
@@ -43,19 +43,19 @@ class RatingController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'nama' => 'required|unique:ratings',  
-            'keterangan' => 'required'         
+        $this->validate($request, [
+            'nama' => 'required|unique:ratings',
+            'keterangan' => 'required'
 
-    	]);
-        
+        ]);
+
         Rating::create([
-    		'nama' => $request->nama,
-            'keterangan' => $request->keterangan   
+            'nama' => $request->nama,
+            'keterangan' => $request->keterangan
 
-    	]);
- 
-    	return redirect('/rating');
+        ]);
+
+        return redirect('/rating');
     }
 
     /**
@@ -68,7 +68,7 @@ class RatingController extends Controller
     {
         $genres = Genre::find($id);
         $ratings = Rating::find($id);
-        return view('Rating.show',  compact('ratings','genres'));
+        return view('Rating.show',  compact('ratings', 'genres'));
     }
 
     /**
@@ -93,13 +93,13 @@ class RatingController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required|unique:ratings',  
-            'keterangan' => 'required'    
+            'nama' => 'required',
+            'keterangan' => 'required'
         ]);
 
         $rating = Rating::find($id); // sehingga line cari($id) dapat dihapus penggunaannya
         $rating->nama = $request->nama;    // Mengupdate data 'nama' berisikan inputan dr nama kedalam DB 
-     
+
         $rating->update();
         return redirect('/rating');
     }
@@ -113,7 +113,7 @@ class RatingController extends Controller
     public function destroy($id)
     {
         $rating = Rating::find($id);
-        $rating->delete(); 
+        $rating->delete();
         return redirect('/rating');
     }
 }
