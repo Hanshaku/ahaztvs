@@ -7,12 +7,12 @@ Route::get('/welcome', function(){
     return view('FormHTML.welcome');
 });
 
-Route::get('/tes', function(){
+Route::get('/admin', function(){
     return view('admin.index');
 });
-Route::get('/master', function(){
-    return view('admin.layoutadmin.master');
-});
+// Route::get('/master', function(){
+//     return view('admin.layoutadmin.master');
+// });
 // Route::get('/ini', function(){
 //     return view('inifilm.index');
 // });

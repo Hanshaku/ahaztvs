@@ -11,7 +11,7 @@
         <a href="/film/create" class="btn btn-primary mb-2">Tambah</a>
         <div class="row" >
             @forelse ($film as $value)
-                <div class="col-4">
+                <div class="col-md-6">
                     <div class="card">
                         <img src="{{ asset('image/'.$value->poster) }}" class="car-img-top" style=" width: 100%; height: 15vw; object-fit: cover;" alt="...">
                             <div class="card-body">

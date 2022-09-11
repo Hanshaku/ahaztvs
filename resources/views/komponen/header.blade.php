@@ -34,7 +34,7 @@
             <a class="nav-link" href="/genre">Genre</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">publisher</a>
+            <a class="nav-link" href="/rating">Rating</a>
           </li>
          
           <li class="nav-item">
@@ -56,7 +56,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Profile</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Profile</a>
+          <a class="dropdown-item" href="/profile">Profile</a>
           <a class="dropdown-item" href="/admin">Settings</a>
           <a class="dropdown-item" href="#">Something else here</a>
           <div class="dropdown-divider"></div>

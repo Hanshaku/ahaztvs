@@ -9,6 +9,10 @@
     <div class="row">
         <!-- Left col -->
         <div class="col-md mt-5 justify-content-center">
+          <a href="/genre/create">
+            
+          <button type="submit" class="btn btn-info">Tambah data</button>
+          </a>
           <!-- TABLE: LATEST 1 -->
           <div class="card mt-5">
             <div class="card-header border-transparent">

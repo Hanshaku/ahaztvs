@@ -1,10 +1,10 @@
-@extends ('Layout.drAdmin')        <!-- Menambahkan layout drAdmin -->
+@extends('Genre.layouts.layoutgenre')       <!-- Menambahkan layout drAdmin -->
 
 @section ('title','Detail')              <!-- Judul pd tab browser -->
 
 @section ('heading','Detail Rating')   
 
-@section ('body')                       <!-- Ditampilkan pada user -->
+@section ('konten')                       <!-- Ditampilkan pada user -->
 <h2>Menampilkan List Film dengan rating {{$ratings->nama}} </h2>
 <hr>
 <div class="row">

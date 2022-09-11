@@ -24,7 +24,7 @@
 </div>
 
   <!-- Main Footer -->
-  @include('komponen.footer')
+  @include('admin.komponenadmin.footer')
 </div>
 <!-- ./wrapper -->
 

@@ -22,9 +22,9 @@ class CreateFilmsTable extends Migration
             $table->string('video');
 
             $table->unsignedBigInteger('rating_id')->nullable();
-            $table->foreign('rating_id')->references('id')->on('ratings');
+            $table->foreign('rating_id')->references('id')->on('ratings')->onDelete('cascade');
             $table->unsignedBigInteger('genre_id')->nullable();
-            $table->foreign('genre_id')->references('id')->on('genres');
+            $table->foreign('genre_id')->references('id')->on('genres')->onDelete('cascade');
 
             $table->timestamp('deleted_at');
             $table->timestamps();

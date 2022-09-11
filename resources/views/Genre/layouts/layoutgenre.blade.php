@@ -13,7 +13,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__wobble" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__wobble" src="{{asset('hae/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -24,7 +24,14 @@
     </div>
   </div>
   <div class="content">
-    @yield('konten')
+    <div class="container" >
+      <div class="row justify-content-center" >
+        <div class="col-md-8" style="margin-top: 10%">
+          @yield('konten')
+
+        </div>
+      </div>
+    </div>
   </div>
   {{-- footer --}}
  @include('admin.komponenadmin.footer')

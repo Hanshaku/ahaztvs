@@ -1,10 +1,10 @@
-@extends('Layout.drAdmin')               <!-- Menambahkan layout drAdmin -->
+@extends('Genre.layouts.layoutgenre')              <!-- Menambahkan layout drAdmin -->
 
 @section ('title', 'Tambah Data')              <!-- Judul pd tab browser -->
 
 @section ('heading','Pendaftaran Film')   
 
-@section ('body')                             <!-- Ditampilkan pada user -->
+@section ('konten')                             <!-- Ditampilkan pada user -->
     <h2>Tambah Data</h2>
     <form action="/film" method="POST" enctype="multipart/form-data">
         @csrf

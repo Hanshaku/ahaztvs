@@ -1,13 +1,12 @@
-@extends('Layout.drAdmin')               <!-- Menambahkan layout drAdmin -->
+@extends('Genre.layouts.layoutgenre')              <!-- Menambahkan layout drAdmin -->
 
 @section ('title', 'Tambah Genre Film')              <!-- Judul pd tab browser -->
 
 @section ('heading','Data Genre')   
 
-@section ('body')                             <!-- Ditampilkan pada user -->
+@section ('konten')                             <!-- Ditampilkan pada user -->
     <form action="/rating" method="POST">
         @csrf
-        <div class="d-flex"><button type="submit" class="btn btn-primary btn-sm">@yield('title')</button></div>
         <div class="form-group">
             <label for="nama">Rating</label>
             <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Rating Baru">

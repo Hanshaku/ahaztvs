@@ -1,13 +1,13 @@
-@extends('Layout.drAdmin')                  <!-- Menambahkan layout drAdmin -->
+@extends('Genre.layouts.layoutgenre')                  <!-- Menambahkan layout drAdmin -->
 
 @section ('title', 'Rating')                <!-- Judul pd tab browser -->
 
 @section ('heading','Rating')   
 
-@section ('body')                                <!-- Ditampilkan pada user -->
+@section ('konten')                                <!-- Ditampilkan pada user -->
 <a href="/rating/create" class="btn btn-primary mb-3">Tambah</a>
-        <table class="table">
-            <thead class="thead-light">
+        <table class="table border-transparent">
+            <thead class="thead-dark">
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nama</th>
@@ -30,10 +30,10 @@
                             </ul>
                         </td>
                         <td>
-                            <a href="/rating/{{$rating->id}}" class="btn btn-info">Show</a>
-                            <a href="/rating/{{$rating->id}}/edit" class="btn btn-primary">Edit</a>
                             <form action="/rating/{{$rating->id}}" method="POST">
                                 @csrf
+                                <a href="/rating/{{$rating->id}}" class="btn btn-info">Show</a>
+                                <a href="/rating/{{$rating->id}}/edit" class="btn btn-primary">Edit</a>
                                 @method('DELETE')
                                 <input type="submit" class="btn btn-danger my-1" value="Delete">
                             </form>

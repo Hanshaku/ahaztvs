@@ -41,7 +41,12 @@
           <img src="{{asset('hae/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="/profile" class="d-block">
+            @auth
+            {{auth()->user()->name}}
+            @else
+            Anda belum login
+          @endauth</a>
         </div>
       </div>
 
@@ -50,27 +55,27 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
          
               <li class="nav-item">
-                <a href="pages/examples/invoice.html" class="nav-link">
+                <a href="/welcome" class="nav-link">
                   <i class="far nav-icon fas fa-book"></i>
                   <p>Home</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/invoice.html" class="nav-link">
+                <a href="/film" class="nav-link">
                   <i class="far nav-icon fas fa-book"></i>
-                  <p>Film</p>
+                  <p>Data Film</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="/genre" class="nav-link">
                   <i class="far nav-icon fas fa-book"></i>
-                  <p>Genre</p>
+                  <p>Data Genre</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/invoice.html" class="nav-link">
+                <a href="/rating" class="nav-link">
                   <i class="far nav-icon fas fa-book"></i>
-                  <p>Publisher</p>
+                  <p>Data Rating</p>
                 </a>
               </li>
              
@@ -103,10 +108,10 @@
         <div class="row">
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-eye"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">CPU Traffic</span>
+                <span class="info-box-text">View</span>
                 <span class="info-box-number">
                   10
                   <small>%</small>
@@ -136,10 +141,10 @@
 
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-comments"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Sales</span>
+                <span class="info-box-text">Komentar</span>
                 <span class="info-box-number">760</span>
               </div>
               <!-- /.info-box-content -->

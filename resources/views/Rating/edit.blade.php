@@ -1,10 +1,10 @@
-@extends('Layout.drAdmin')                              <!-- Menambahkan layout drAdmin -->
+@extends('Genre.layouts.layoutgenre')                           <!-- Menambahkan layout drAdmin -->
 
 @section ('title', 'Edit Data')                               <!-- Judul pd tab browser -->
 
 @section ('heading','Ubah Data')   
 
-@section ('body')    
+@section ('konten')    
 <div>
     <form action="/rating/{{$rating->id}}" method="POST"><!-- force method POST menjadi PUT -->
         @csrf

@@ -1,10 +1,10 @@
-@extends ('Layout.drAdmin')             <!-- Menambahkan layout drAdmin -->
+@extends('Genre.layouts.layoutgenre')              <!-- Menambahkan layout drAdmin -->
 
 @section ('title', 'Register')                <!-- Judul pd tab browser -->
 
 @section ('heading','Pendaftaran')   
 
-@section ('body')                             <!-- Ditampilkan pada user -->
+@section ('konten')                             <!-- Ditampilkan pada user -->
   <form action="/welcome" method="post">               <!-- Form crucial -->
   @csrf <!-- 
   To prevent this vulnerability, we need to inspect every incoming POST, PUT, PATCH, or DELETE 
