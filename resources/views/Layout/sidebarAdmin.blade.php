@@ -18,7 +18,7 @@
             <a href="#" class="d-block">Anda Belum Login</a>            
           @endguest
           @auth
-            <a href="#" class="d-block">{{ Auth::user()->name }} ({{ Auth::user()->profile->bio }} )  </a>
+            <a href="#" class="d-block">{{ Auth::user()->name }} ({{ Auth::user()->profile->bio }})  </a>
           @endauth
         </div>
       </div>
@@ -60,9 +60,9 @@
             </a> 
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/cast" class="nav-link">
+                <a href="/rating" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Data Cast</p>
+                  <p>Data Rating</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -118,9 +118,9 @@
             </a> 
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/cast" class="nav-link">
+                <a href="/rating" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Data Cast</p>
+                  <p>Data Rating</p>
                 </a>
               </li>
               <li class="nav-item">

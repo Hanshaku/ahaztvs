@@ -44,15 +44,13 @@ class CastController extends Controller
     public function store(Request $request)
     {
     	$this->validate($request,[
-    		'nama' => 'required',       // Memvalidasi data nama berisikan inputan / tidak pd form
-    		'umur' => 'required',
-            'bio' => 'required'
+    		'nama' => 'required:casts'       // Memvalidasi data nama berisikan inputan / tidak pd form
+
     	]);
- 
+        
         Cast::create([
-    		'nama' => $request->nama,   // Mengirimkan data 'nama' berisikan inputan dr nama kedalam DB
-    		'umur' => $request->umur,
-            'bio' => $request->bio
+    		'nama' => $request->nama   // Mengirimkan data 'nama' berisikan inputan dr nama kedalam DB
+
     	]);
  
     	return redirect('/cast');
@@ -92,15 +90,13 @@ class CastController extends Controller
     public function update($id, Request $request) //  (Cast $cast)
     {
        $request->validate([
-            'nama' => 'required|unique:casts',  // casts merupakan tabel pd DB
-            'umur' => 'required',
-            'bio' => 'required'
+            'nama' => 'required|unique:casts'  // casts merupakan tabel pd DB
+
        ]);
 
        $cast = Cast::find($id); // sehingga line cari($id) dapat dihapus penggunaannya
        $cast->nama = $request->nama;    // Mengupdate data 'nama' berisikan inputan dr nama kedalam DB 
-       $cast->umur = $request->umur;    // berdasarkan find($id) atau sqlnya where id = $id
-       $cast->bio = $request->bio;
+
        $cast->update();
        return redirect('/cast');
     }

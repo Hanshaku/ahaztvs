@@ -1,30 +1,38 @@
 @extends('Layout.drAdmin')                  <!-- Menambahkan layout drAdmin -->
 
-@section ('title', 'Peserta Cast')                <!-- Judul pd tab browser -->
+@section ('title', 'Rating')                <!-- Judul pd tab browser -->
 
-@section ('heading','Peserta Cast')   
+@section ('heading','Rating')   
 
 @section ('body')                                <!-- Ditampilkan pada user -->
-<a href="/cast/create" class="btn btn-primary mb-3">Tambah</a>
+<a href="/rating/create" class="btn btn-primary mb-3">Tambah</a>
         <table class="table">
             <thead class="thead-light">
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nama</th>
-
+                <th scope="col">Keterangan</th>
+                <th scope="col">List Film</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
-                @forelse ($cast as $key=>$value)
+                @forelse ($ratings as $index=>$rating) 
                     <tr>
-                        <td>{{$key + 1}}</th>
-                        <td>{{$value->nama}}</td>
-
+                        <td>{{$index + 1}}</th>
+                        <td>{{$rating->nama}}</td>
+                        <td>{{$rating->keterangan}}</td>
                         <td>
-                            <a href="/cast/{{$value->id}}" class="btn btn-info">Show</a>
-                            <a href="/cast/{{$value->id}}/edit" class="btn btn-primary">Edit</a>
-                            <form action="/cast/{{$value->id}}" method="POST">
+                            <ul>
+                                @foreach ($rating->films as $film)
+                                    <li>{{ $film->judul }}</li>   
+                                @endforeach
+                            </ul>
+                        </td>
+                        <td>
+                            <a href="/rating/{{$rating->id}}" class="btn btn-info">Show</a>
+                            <a href="/rating/{{$rating->id}}/edit" class="btn btn-primary">Edit</a>
+                            <form action="/rating/{{$rating->id}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <input type="submit" class="btn btn-danger my-1" value="Delete">

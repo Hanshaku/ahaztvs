@@ -14,13 +14,13 @@ class Film extends Model
         return $this->belongsTo('App\Genre');
     }
 
-    public function review()
+    public function reviews()
     {
         return $this->hasMany('App\Review');
     }
 
-    public function roles()
+    public function rating()
     {
-        return $this->hasMany('App\Role');
+        return $this->belongsTo('App\Rating');
     }
 }

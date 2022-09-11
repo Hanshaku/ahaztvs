@@ -4,7 +4,25 @@
 
 @section ('heading','Ubah Data')   
 
+<<<<<<< HEAD
 @section ('konten')    
+=======
+@section ('body')    
+<div>
+    <h2>Edit genre {{$genres->nama}}</h2>
+    <form action="/genre/{{$genres->id}}" method="POST"><!-- force method POST menjadi PUT -->
+        @csrf
+        @method('PUT')
+        <div class="form-group">
+            <label for="nama">Nama Genre</label>
+            <input type="text" class="form-control" name="nama" value="{{$genres->nama}}" id="nama" placeholder="Masukkan Nama">
+            @error('nama')
+                <div class="alert alert-danger">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+>>>>>>> b6499604a7d45d039e3e33e7ddeb022d6c07c730
 
 <div class="container">
     <div class="row">

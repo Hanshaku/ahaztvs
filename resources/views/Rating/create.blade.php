@@ -6,7 +6,7 @@
 
 @section ('body')                             <!-- Ditampilkan pada user -->
     <h2>Tambah Data</h2>
-    <form action="/cast" method="POST">
+    <form action="/rating" method="POST">
         @csrf
         <div class="form-group">
             <label for="nama">Nama</label>
@@ -17,16 +17,16 @@
                 </div>
             @enderror
         </div>
-<!--        <div class="form-group">
-            <label for="umur">Umur</label>
-            <input type="text" class="form-control" name="umur" id="umur" placeholder="Masukkan Umur">
-            @error('umur')
+        <div class="form-group">
+            <label for="keterangan">Keterangan</label>
+            <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Keterangan">
+            @error('keterangan')
                 <div class="alert alert-danger">
                     {{ $message }}
                 </div>
             @enderror
         </div>
-        <div class="form-group">
+ <!--       <div class="form-group">
             <label for="bio">Bio</label>       
             <input type="text" class="form-control" name="bio" id="bio" placeholder="Masukkan Bio Terakhir">
             @error('bio')

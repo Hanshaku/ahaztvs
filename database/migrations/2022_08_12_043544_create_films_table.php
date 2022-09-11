@@ -21,6 +21,8 @@ class CreateFilmsTable extends Migration
             $table->string('poster');
             $table->string('video');
 
+            $table->unsignedBigInteger('rating_id')->nullable();
+            $table->foreign('rating_id')->references('id')->on('ratings');
             $table->unsignedBigInteger('genre_id')->nullable();
             $table->foreign('genre_id')->references('id')->on('genres');
 

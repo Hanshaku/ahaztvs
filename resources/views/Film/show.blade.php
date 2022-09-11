@@ -13,11 +13,11 @@
 
   <h2>Komentar</h2>
 
-  @foreach ($film->review as $value)
+  @foreach ($rating as $value)
     <div class="card">
       <div class="card-body">
-        <h3>{{ $value->user->name }}</h3>
-              <p class="card-text"> {{ $value->content }}</p>
+        <h3>{{ $user->name }}</h3>
+              <p class="card-text"> {{ $rating->keterangan }}</p>
              
           </div>
   </div>

@@ -80,13 +80,13 @@ Route::resource('/review', 'ReviewController')->only(['index','store']);
 Auth::routes();
 
 // CRUD Routes
-Route::get('/cast','CastController@index')->name('cast.index');  
-Route::get('/cast/create','CastController@create')->name('cast.create');        
-Route::post('/cast','CastController@store')->name('cast.store');
-Route::get('/cast/{id}','CastController@show')->name('cast.show');
-Route::get('/cast/{id}/edit','CastController@edit')->name('cast.edit');
-Route::put('/cast/{id}','CastController@update')->name('cast.update');
-Route::delete('/cast/{id}','CastController@destroy')->name('cast.destroy');
+Route::get('/rating','ratingController@index')->name('rating.index');  
+Route::get('/rating/create','ratingController@create')->name('rating.create');        
+Route::post('/rating','ratingController@store')->name('rating.store');
+Route::get('/rating/{id}','ratingController@show')->name('rating.show');
+Route::get('/rating/{id}/edit','ratingController@edit')->name('rating.edit');
+Route::put('/rating/{id}','ratingController@update')->name('rating.update');
+Route::delete('/rating/{id}','ratingController@destroy')->name('rating.destroy');
 
 // CRUD Genre Routes
 Route::get('/genre','GenreController@index')->name('genre.index');  

@@ -29,7 +29,7 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="ringkasan">Kategori</label>
+            <label for="ringkasan">Genre</label>
             <select name="genre_id" class="form-control" id="genre_id">
                 <option value="">----- Pilih salah satu -----</option>
                 @foreach ($genre as $item)
@@ -46,8 +46,28 @@
                 </div>
             @enderror
         </div>
+        
         <div class="form-group">
-            <label for="tahun">Tahun</label>
+            <label for="rating_id">Rating</label>
+            <select name="rating_id" class="form-control" id="">
+                <option value="">----- Pilih salah satu -----</option>
+                @foreach ($rating as $item)
+                    @if ($item->id === $film->rating_id)
+                    <option value="{{ $item->id }}" selected>{{ $item->nama }}</option>         
+                    @else
+                    <option value="{{ $item->id }}">{{ $item->nama }}</option> 
+                    @endif        
+                @endforeach
+            </select>
+            @error('rating_id')
+                <div class="alert alert-danger">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="tahun">Tahun Rilis</label>
             <input type="number" class="form-control" name="tahun" value="{{$film->tahun}}"  id="tahun" placeholder="Masukkan Tahun"> 
             @error('tahun')
                 <div class="alert alert-danger">
